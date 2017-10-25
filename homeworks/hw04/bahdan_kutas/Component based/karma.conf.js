@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Oct 19 2017 12:45:15 GMT+0300 (Belarus Standard Time)
+// Generated on Tue Oct 24 2017 13:41:25 GMT+0300 (Belarus Standard Time)
 
 module.exports = function(config) {
   config.set({
@@ -15,9 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './node_modules/angular/angular.js',
-      './node_modules/angular-mocks/angular-mocks.js',
-      './app/tests/*.spec.js',
+      { pattern: './app/tests/entry.js' },
     ],
 
 
@@ -29,8 +27,36 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      './app/tests/entry.js': ['webpack'],
     },
 
+    webpack: {
+      module: {
+          rules: [
+              {
+                  test: /\.js$/,
+                  exclude: /node_modules/,
+                  use: { loader: 'babel-loader' },
+              },
+              {
+                  test: /\.html$/,
+                  exclude: /node_modules/,
+                  use: { loader: 'html-loader' },
+              },
+              {
+                  test: /\.(png|jpg|gif)$/,
+                  use: [
+                      {
+                          loader: 'file-loader',
+                          options: {
+                              name: 'img/[name].[ext]',
+                          },
+                      },
+                  ],
+              },
+          ],
+      }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

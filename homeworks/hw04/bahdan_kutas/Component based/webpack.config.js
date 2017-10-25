@@ -18,10 +18,12 @@ module.exports = {
             },
             {
                 test: /\.js$/,
+                include: [
+                    path.join(__dirname, 'app'),
+                    path.join(__dirname, 'app/tests'),
+                ],
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                },
+                use: { loader: 'babel-loader' },
             },
             {
                 test: /\.html$/,
