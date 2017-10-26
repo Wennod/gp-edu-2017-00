@@ -12,7 +12,113 @@
     </div>
 </div>
 <div class="search-wraper">
-    <filter-form set-form-validity="$ctrl.setFormValidity({payloadObj: payloadObj})" set-value="$ctrl.setValue({payloadObj: payloadObj})"></filter-form>
+    <!-- <filter-form set-form-validity="$ctrl.setFormValidity({payloadObj: payloadObj})" set-value="$ctrl.setValue({payloadObj: payloadObj})"></filter-form> -->
+    <div class="form-wrapper">
+        <form class="filter" name="filterForm" ng-submit="$ctrl.setFormValidity({payloadObj: {valid: filterForm.$valid, errors: filterForm.$error, submitted: filterForm.$submitted}})">
+            <section class="section">
+                <div class="section__wraper">
+                    <h5 class="section__intro-heading">We’ve found you 32 results based on a starting balance of</h5>
+                    <div class="section__text">
+                        <text-input set-value="$ctrl.setValue({payloadObj: payloadObj})"></text-input>
+                    </div>
+                    <div class="messages" ng-messages="filterForm.textInput.$error" role="alert">
+                        <div class="messages__item" ng-message="required"></div>
+                        <div class="messages__item messages__item--min-length" ng-message="minLengthValidator"></div>
+                        <div class="messages__item messages__item--max-length" ng-message="maxLengthValidator"></div>
+                        <div class="messages__item messages__item--pattern" ng-message="patternValidator"></div>
+                        <div class="messages__item messages__item--range" ng-message="rangeValidator"></div>
+                    </div>
+                </div>
+                <div class="section__area">
+                    <div class="section__area-title">Account type(s)</div>
+                    <div class="section__dropdown section__dropdown--display-inline">
+                        <div class="dropdown">
+                            <select class="dropdown__select" name="" id="" required>
+                                <option class="dropdown__option" value="" selected disabled hidden>Show all</option>
+                                <option class="dropdown__option" value="1">1</option>
+                                <option class="dropdown__option" value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section__checkbox section__checkbox--layout">
+                        <div class="checkbox checkbox">
+                            <input class="checkbox__input" type="checkbox" id="account-checkbox">
+                            <label for="account-checkbox" class="checkbox__label">Only show accounts I can open through MoneySupermarket (5)</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h5 class="section__heading">Filter results by:</h5>
+                <div class="section__area">
+                    <div class="section__area-title">Transfer in</div>
+                    <div class="section__radio">
+                        <div class="radio radio">
+                            <input type="radio" name="radio-group" id="result-radio-a" class="radio__radiobtn" required>
+                            <label for="result-radio-a" class="radio__label">Yes</label>
+                        </div>
+                    </div>
+                    <div class="section__radio">
+                        <div class="radio radio">
+                            <input type="radio" name="radio-group" id="result-radio-b" class="radio__radiobtn">
+                            <label for="result-radio-b" class="radio__label">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__area">
+                    <div class="section__area-title">Account opening</div>
+                    <div class="section__checkbox">
+                        <div class="checkbox">
+                            <input class="checkbox__input checkbox__input--button" type="checkbox" id="account-checkbox-a">
+                            <label for="account-checkbox-a" class="checkbox__label checkbox__label--button">Opt in phone</label>
+                        </div>
+                    </div>
+                    <div class="section__checkbox">
+                        <div class="checkbox">
+                            <input class="checkbox__input checkbox__input--button" type="checkbox" id="account-checkbox-b">
+                            <label for="account-checkbox-b" class="checkbox__label checkbox__label--button">Opt in text</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__area">
+                    <div class="section__area-title">Managing your account</div>
+                    <div class="section__dropdown">
+                        <div class="dropdown">
+                            <select class="dropdown__select" name="" id="" required>
+                                <option class="dropdown__option" value="" selected disabled hidden>Show all</option>
+                                <option class="dropdown__option" value="1">1</option>
+                                <option class="dropdown__option" value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__area">
+                    <div class="section__area-title">Notice period or term</div>
+                    <div class="section__password">
+                        <div class="password">
+                            <input type="password" name="" id="resultPass" class="password__input" required>
+                            <label class="password__label" for="resultPass"></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section--row-flow">
+                <h5 class="section__heading section__heading--no-padding">Order results by:</h5>
+                <div class="section__area section__area--margin">
+                    <div class="dropdown dropdown--width">
+                        <select class="dropdown__select" name="" id="" required>
+                            <option class="dropdown__option" value="" selected disabled hidden>Interest rate (AER)</option>
+                            <option class="dropdown__option" value="1">1</option>
+                            <option class="dropdown__option" value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <div class="submit">
+                <input type="submit" value="" class="submit__input">
+            </div>
+        </form>
+    </div>
 </div>
 <div class="main">
     <div class="main__pagination">

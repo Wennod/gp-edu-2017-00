@@ -15,10 +15,10 @@ describe('maxLengthDirective', () => {
     });
     it('length eq 8 should be ok', () => {
         form.input.$setViewValue('12345678');
-        expect(form.input.$valid).toEqual(true);        
+        expect(form.input.$valid).toEqual(true);
     });
     it('length eq 9 should be false', () => {
         form.input.$setViewValue('123456789');
-        expect(form.input.$valid).toEqual(false);        
+        expect(form.input.$valid).toEqual(false);
     });
 });
